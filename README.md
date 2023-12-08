@@ -1,3 +1,7 @@
+# This is a experimental fork!
+The only purpose of this repository is to experiment with new appproaches to maybe achieve a better developer experience.
+The official repository is linked [here](https://github.com/discord-jda/JDA).
+
 [maven-central]: https://img.shields.io/maven-central/v/net.dv8tion/JDA?color=blue
 [jitpack]: https://img.shields.io/badge/Snapshots-JitPack-blue
 [download]: #download
