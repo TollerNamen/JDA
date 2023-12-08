@@ -19,6 +19,7 @@ package net.dv8tion.jda.api.interactions.components.buttons;
 import net.dv8tion.jda.api.entities.emoji.Emoji;
 import net.dv8tion.jda.api.entities.emoji.EmojiUnion;
 import net.dv8tion.jda.api.events.interaction.component.ButtonInteractionEvent;
+import net.dv8tion.jda.api.hooks.AnonymousListenerAdapter;
 import net.dv8tion.jda.api.interactions.components.ActionComponent;
 import net.dv8tion.jda.api.interactions.components.ActionRow;
 import net.dv8tion.jda.api.interactions.components.ItemComponent;
@@ -684,5 +685,24 @@ public interface Button extends ActionComponent
         else if (emoji != null)
             return of(style, idOrUrl, emoji);
         throw new IllegalArgumentException("Cannot build a button without a label and emoji. At least one has to be provided as non-null.");
+    }
+
+    /**
+     * Enables EventHandling using an anonymous class.
+     *
+     * <p><b>Example with a lambda expression</b><br>
+     * <pre>{@code
+     * Button button = Button.primary("exampleId", "Click Me!");
+     * button.setOnInteractionEvent(event -> {
+     *     event.reply("You clicked me!").queue();
+     * });
+     * }</pre>
+     * @param handler
+     *        The anonymous class which can also be a lambda expression
+     *
+     */
+    default void setOnInteractionEvent(AnonymousListenerAdapter.ButtonInteractionHandler handler)
+    {
+        AnonymousListenerAdapter.buttonInteractionHandlers.put(getId(), handler);
     }
 }
